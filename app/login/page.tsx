@@ -23,7 +23,7 @@ export default function LoginPage() {
       setLoading(true);
 
       const response = await fetch(
-        `/admin/login`,
+        `/api/admin/login`,
         {
           method: "POST",
           headers: {
