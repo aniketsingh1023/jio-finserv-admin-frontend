@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getToken, setToken } from "@/lib/auth";
@@ -53,6 +54,16 @@ export default function LoginPage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-[var(--background)] px-4">
       <div className="w-full max-w-md rounded-2xl border border-[var(--muted)] bg-white p-8 shadow-md">
+        <div className="flex justify-center mb-6">
+          <Image
+            src="/logoimg.jpeg"
+            alt="Logo"
+            width={180}
+            height={60}
+            className="object-contain"
+          />
+        </div>
+
         <h1 className="text-center text-2xl font-bold text-[var(--primary)]">
           Admin Login
         </h1>

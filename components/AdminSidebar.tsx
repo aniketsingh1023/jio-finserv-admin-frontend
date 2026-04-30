@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const navItems = [
@@ -16,9 +17,13 @@ export default function AdminSidebar() {
   return (
     <aside className="fixed inset-y-0 left-0 z-30 hidden w-72 border-r border-[var(--muted)] bg-white lg:block">
       <div className="flex h-20 items-center border-b border-[var(--muted)] px-6">
-        <h1 className="text-xl font-bold text-[var(--primary)]">
-          Web Admin
-        </h1>
+        <Image
+          src="/logoimg.jpeg"
+          alt="Logo"
+          width={150}
+          height={50}
+          className="object-contain"
+        />
       </div>
 
       <nav className="px-4 py-6">
