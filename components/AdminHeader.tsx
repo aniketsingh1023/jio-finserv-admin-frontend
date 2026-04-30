@@ -1,6 +1,7 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { removeToken } from "@/lib/auth";
 
 const pageTitles: Record<string, { title: string; subtitle: string }> = {
   "/dashboard": {
@@ -23,9 +24,15 @@ const pageTitles: Record<string, { title: string; subtitle: string }> = {
 
 export default function AdminHeader() {
   const pathname = usePathname();
+  const router = useRouter();
   const page = pageTitles[pathname] ?? {
     title: "Admin",
     subtitle: "",
+  };
+
+  const handleLogout = () => {
+    removeToken();
+    router.replace("/login");
   };
 
   return (
@@ -36,8 +43,17 @@ export default function AdminHeader() {
           <p className="text-sm text-slate-500">{page.subtitle}</p>
         </div>
 
-        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--primary)] text-white font-semibold">
-          A
+        <div className="flex items-center gap-4">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--primary)] text-white font-semibold">
+            A
+          </div>
+          <button
+            onClick={handleLogout}
+            className="rounded-lg border border-[var(--muted)] bg-white px-4 py-2 text-sm font-medium text-[var(--primary)] shadow-sm hover:bg-[var(--primary-light)]/30"
+            title="Logout"
+          >
+            Logout
+          </button>
         </div>
       </div>
     </header>
